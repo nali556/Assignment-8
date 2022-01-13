@@ -20,7 +20,6 @@ export default function Debits() {
   }, []);
   return (
     <div className="container">
-        <Link to="/">Back to Home</Link>
       <h1 className="text-center">Debits</h1>
       <table className="table table-dark table-striped text-center m-5">
         <thead>

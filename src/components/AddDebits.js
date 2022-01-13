@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from "react";
-
+import { Link } from "react-router-dom";
 export default function AddDebits() {
     const [debit, setDebit] = useState("Enter the item name");
 
@@ -29,6 +29,7 @@ export default function AddDebits() {
 
     return(
         <Fragment>
+            <Link to="/debits">Back to Debits List</Link>
             <h1 className = "text-center mt-5"> 
                 Add Your Debit
             </h1>
