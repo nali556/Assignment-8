@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-export default function DebitData({ data }) {
+export default function CreditData({ data }) {
   if (data === undefined) {
     return <div>Loading...</div>;
   }
