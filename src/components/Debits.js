@@ -10,7 +10,6 @@ export default function Debits() {
     try {
       //4. fetch and assign the response
       const response = await axios("https://moj-api.herokuapp.com/debits");
-      console.log("RESPONSE:::::", response);
       setData(response);
     } catch (err) {
       console.error(err.message);
@@ -21,17 +20,16 @@ export default function Debits() {
   }, []);
   return (
     <div>
-      <div className="text-center display-1">Debits</div>
-      <table className="table table-dark table-striped m-5">
+      <h1 className="text-center">Debits</h1>
+      <table className="table table-dark table-striped text-center m-5">
         <thead>
           <tr>
-            <th className="text-align-center" scope="col">Name</th>
+            <th scope="col">Name</th>
             <th scope="col">Price</th>
+            <th scope="col">Date</th>
           </tr>
         </thead>
-        <tbody>
-          <DebitData data={data.data} />
-        </tbody>
+          <DebitData data={data.data}></DebitData>
       </table>
     </div>
   );
