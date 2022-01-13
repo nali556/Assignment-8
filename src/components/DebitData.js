@@ -12,17 +12,13 @@ export default function DebitData({data}) {
     console.log(typeof(data))
     return (
         <div>
-            <h1> Debits </h1>
             {data.map(element =>{
                     return(
-                        <tbody key= {element.id}>
-                            <tr>
-                                <th scope="row">{element.description}</th>
-                                <td>{element.amount}</td>
-                                <td>{element.date}</td>
-                            </tr>
-                        </tbody>
-
+                        <tr>
+                            <th scope="row">{element.description}</th>
+                            <td className="text-center">{element.amount}</td>
+                            <td className="text-align-center">{element.date}</td>
+                        </tr>
                     )
                 })
             }
