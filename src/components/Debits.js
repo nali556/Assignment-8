@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DebitData from "./DebitData";
@@ -19,7 +19,8 @@ export default function Debits() {
     getData();
   }, []);
   return (
-    <div>
+    <div className="container">
+        <Link to="/">Back to Home</Link>
       <h1 className="text-center">Debits</h1>
       <table className="table table-dark table-striped text-center m-5">
         <thead>
@@ -29,8 +30,14 @@ export default function Debits() {
             <th scope="col">Date</th>
           </tr>
         </thead>
-          <DebitData data={data.data}></DebitData>
+        <DebitData data={data.data}></DebitData>
       </table>
+      <div className="d-flex justify-content-around">
+      <Link to="/addDebit"><button type="button" className="btn btn-dark add">
+          Add Debit
+        </button></Link>
+      </div>
+      
     </div>
   );
 }

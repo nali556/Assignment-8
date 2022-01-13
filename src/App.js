@@ -5,6 +5,8 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/LogIn';
 import Debits from './components/Debits';
+import AddDebits from './components/AddDebits';
+import Credits from './components/Credits';
 
 function App() {
 
@@ -22,7 +24,9 @@ const mockLogIn = (logInInfo) => {
             <Route path="/" element={<Home accountBalance={accountBalance}/>}/>
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
             <Route path="/login" element={<LogIn user={currentUser} mockLogIn={mockLogIn}/>}/>
-            <Route path="debits" element={<Debits/>}/>
+            <Route path="/debits" element={<Debits/>}/>
+            <Route path="/credits" element={<Credits/>}/>
+            <Route path="/addDebit" element={<AddDebits/>}/>
           </Routes>
         </BrowserRouter>
     );

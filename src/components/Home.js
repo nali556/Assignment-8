@@ -11,6 +11,7 @@ function Home(props) {
           <Link to="/userProfile">User Profile</Link> <br></br>
           <Link to="/login">Log In</Link> <br></br>
           <Link to="/debits">Debits</Link>
+          <Link to="/credits">Debits</Link>
           <AccountBalance accountBalance={props.accountBalance}/>
         </div>
     );
