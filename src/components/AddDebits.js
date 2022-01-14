@@ -20,8 +20,7 @@ export default function AddDebits() {
         inputObj.amount = inputPrice
         inputObj.date = currentDate
         console.log(inputObj)
-        
-        // const response = await axios.get("https://moj-api.herokuapp.com/debits")
+        //const response = await axios.get("https://moj-api.herokuapp.com/debits")
         // .then(response =>{
         //     //this.state.debittrans=response.data
         // })
@@ -59,7 +58,6 @@ export default function AddDebits() {
                     ADD
                 </button>
             </form>
-            {}
         </Fragment>
         
     )
