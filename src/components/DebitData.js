@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 export default function DebitData({ data }) {
+  //Needed below, page will not load
   if (data === undefined) {
     return <div>Loading...</div>;
   }

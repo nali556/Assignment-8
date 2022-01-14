@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//Nav, has Navbar which is displayed on top of every page
 export default function Nav() {
   return (
     <div>

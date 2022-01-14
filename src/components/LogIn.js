@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
-
+//Log in page, changes name
 function LogIn(props) {
   
   const [user, setUser] = useState({ userName: "", password: "" })

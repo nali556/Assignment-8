@@ -5,21 +5,17 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/LogIn';
 import Debits from './components/Debits';
-import AddDebits from './components/AddDebits';
 import Credits from './components/Credits';
-import AddCredit from './components/AddCredit';
 import Nav from './components/Nav';
 import axios from 'axios'
 function App() {
 
 const [accountBalance, setAccountBalance] = useState()
 const [currentUser, setCurrentUser] = useState({ userName: "bob_loblaw", memberSince: '08/23/99' })
-// const [debitData, setDebitData] = useState([])
-// const [creditData, setCreditData] = useState([])
 
 const getData = async () => {
   try {
-    //4. fetch and assign the response
+    //Local storage allows us to have the api throughout the components
     if(!localStorage.getItem("debitData")){
       const debitResponse = await axios("https://moj-api.herokuapp.com/debits");
       localStorage.setItem("debitData", JSON.stringify(debitResponse.data))
@@ -33,6 +29,7 @@ const getData = async () => {
   }
 };
 useEffect(() => {
+  //If local storage does not exist for debit or credit, call the api function
   if(!localStorage.getItem("debitData")){
     getData();
   }
@@ -42,9 +39,13 @@ useEffect(() => {
 },[])
 
 const updateBalance = () => {
+  /*This is still a bit buggy, I think when localStorage is already made, sometimes the balance comes out as NaN. But if it is
+  deleted and made again on home page, it will display correctly. Sometimes refreshing helps too.*/
+  //parsing localStorage to add it to array
   let creditArr = JSON.parse(localStorage.getItem("creditData"))
   let debitArr = JSON.parse(localStorage.getItem("debitData"))
   let sum = 0
+  //Credit adds to balance, debits subtracts
   for(let i = 0; i < creditArr.length;i++){
     sum += creditArr[i].amount
   }
@@ -56,6 +57,7 @@ const updateBalance = () => {
 }
 
 useEffect(() => {
+  //Check balance everytime we are on home page
   updateBalance()
 })
 const mockLogIn = (logInInfo) => {
@@ -73,8 +75,6 @@ const mockLogIn = (logInInfo) => {
             <Route path="/login" element={<LogIn user={currentUser} mockLogIn={mockLogIn}/>}/>
             <Route path="/debits" element={<Debits/>}/>
             <Route path="/credits" element={<Credits/>}/>
-            <Route path="/addDebit" element={<AddDebits/>}/>
-            <Route path="/addCredit" element={<AddCredit/>}/>
           </Routes>
         </BrowserRouter>
     );

@@ -5,7 +5,7 @@ import CreditData from "./CreditData";
 export default function Credits() {
   const [data, setData] = useState([]);
 
-  //3. let's define the function `getData`
+  //getData api call if it does not already exist
   const getData = async () => {
     try {
       //4. fetch and assign the response
@@ -15,7 +15,7 @@ export default function Credits() {
       console.error(err.message);
     }
   };
-
+//Check if localstorage exists on render, if it does get the credit data
   useEffect(() => {
     if (localStorage.getItem("creditData")) {
       setData(JSON.parse(localStorage.getItem("creditData")));
@@ -23,25 +23,30 @@ export default function Credits() {
       getData();
     }
   }, []);
-
+//Taking in the inputs, plus the date
   const [name, setName] = useState("Enter the item name");
   const [amount, setAmount] = useState("Enter the price");
   const [id, setId] = useState("Enter the ID")
   const date = new Date();
   let currentDate =
-    date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate() + "T";
-  //1. let create a function to submit and use async/await
+    date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate() + "T"; 
+  /*Used T above, as in CreditData.js, the date that is used from the api has a bunch of gibberish after the date
+  and T, so I get the string until T is found.*/
+  //Submit function
   const onSubmitForm = async (event) => {
     event.preventDefault();
+    //Target value for each input
     let inputName = event.target[0].value;
     let inputPrice = event.target[1].value;
     let inputId = event.target[2].value;
+    //Create object
     const inputObj = new Object();
     inputObj.id = inputId;
     inputObj.description = inputName;
     inputObj.amount = inputPrice;
     inputObj.date = currentDate;
-    const updatedCreditArray = [...data, inputObj];
+    //Update the localStorage with new data
+    const updatedCreditArray = [...data, inputObj]; //new arr with all values in data and new obj
     setData(updatedCreditArray);
     localStorage.setItem("creditData", JSON.stringify(updatedCreditArray));
   };
