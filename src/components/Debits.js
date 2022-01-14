@@ -25,7 +25,6 @@ export default function Debits() {
     }
   }, []);
 
-  console.log(data)
 
   const [name, setName] = useState("Enter the item name");
   const [price, setPrice] = useState("Enter the price here");
@@ -38,7 +37,9 @@ export default function Debits() {
     event.preventDefault();
     let inputName = event.target[0].value;
     let inputPrice = event.target[1].value;
+    let inputId = event.target[2].value;
     const inputObj = new Object();
+    inputObj.id = inputId
     inputObj.description = inputName;
     inputObj.amount = inputPrice;
     inputObj.date = currentDate;
@@ -60,13 +61,6 @@ export default function Debits() {
         </thead>
         <DebitData data={data}></DebitData>
       </table>
-      {/* <div className="d-flex justify-content-around">
-        <Link to="/addDebit">
-          <button type="button" className="btn btn-dark add">
-            Add Debit
-          </button>
-        </Link>
-      </div> */}
 
       <h1 className="text-center mt-5">Add Your Debit</h1>
 
@@ -78,8 +72,9 @@ export default function Debits() {
           onChange={(event) => setName(event.target.value)}
         />
         <input
-          type="text"
+          type="number"
           className="form-control"
+          placeholder="Enter the price"
           value={price}
           onChange={(event) => setPrice(event.target.value)}
         />

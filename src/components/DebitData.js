@@ -4,8 +4,6 @@ export default function DebitData({ data }) {
   if (data === undefined) {
     return <div>Loading...</div>;
   }
-  console.log(data);
-  console.log(typeof data);
   return (
     <>
       {data.map((element) => {

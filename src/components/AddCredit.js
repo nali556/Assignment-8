@@ -47,7 +47,6 @@ export default function AddCredit() {
                     ADD
                 </button>
             </form>
-            {}
         </Fragment>
         
     )
