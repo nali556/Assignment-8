@@ -1,29 +1,30 @@
+import axios from "axios";
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
 export default function AddDebits() {
-    const [debit, setDebit] = useState("Enter the item name");
-
-    //1. let create a function to submit and use async/await    
+    const [name, setName] = useState("Enter the item name");
+    const [price, setPrice] = useState("Enter the price here")
+    const [id, setId] = useState("Enter the ID")
+    const date = new Date()
+    let currentDate = date.getFullYear() + "-" + date.getMonth()+1 + "-" + date.getDate()
     const onSubmitForm = async (event) => {
-        event.preventDefault() //prevent page refresh to happen so we can handle the data
-    //2. prevent default 
-        try{    //4. send the request 
-            //5. declare body 
-            const body = {debit}
-            console.log(event.target.value)
-            //6. fetch 
-            const response = await fetch("https://moj-api.herokuapp.com/debits", {
-                method: 'POST', 
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-              })
-              console.log(response)
-            }
-        catch(err){ //3. error catch
-            console.error(err.message)
-        }
+        event.preventDefault()
+        let inputName = event.target[0].value
+        let inputPrice = event.target[1].value
+        console.log(event)
+        console.log(inputName)
+        console.log(inputPrice)
+        console.log(currentDate)
+        const inputObj = new Object()
+        inputObj.description = inputName
+        inputObj.amount = inputPrice
+        inputObj.date = currentDate
+        console.log(inputObj)
+        //const response = await axios.get("https://moj-api.herokuapp.com/debits")
+        // .then(response =>{
+        //     //this.state.debittrans=response.data
+        // })
+    
     }
 
 
@@ -38,15 +39,25 @@ export default function AddDebits() {
                 <input 
                     type = "text" 
                     className="form-control" 
-                    value = {debit} 
-                    onChange = {(event) => setDebit(event.target.value)} 
+                    value = {name} 
+                    onChange = {(event) => setName(event.target.value)} 
                     />
-                
+                <input
+                    type="text"
+                    className="form-control"
+                    value = {price}
+                    onChange = {(event) => setPrice(event.target.value)}
+                />
+                 <input
+                    type="text"
+                    className="form-control"
+                    value = {id}
+                    onChange = {(event) => setId(event.target.value)}
+                />
                 <button className="btn btn-dark" >
                     ADD
                 </button>
             </form>
-            {}
         </Fragment>
         
     )

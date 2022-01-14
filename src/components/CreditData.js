@@ -4,8 +4,6 @@ export default function CreditData({ data }) {
   if (data === undefined) {
     return <div>Loading...</div>;
   }
-  console.log(data);
-  console.log(typeof data);
   return (
     <>
       {data.map((element) => {
@@ -17,7 +15,7 @@ export default function CreditData({ data }) {
                 <span>{element.amount}</span>
               </td>
               <td>
-                <span>{element.date}</span>
+              <span>{element.date.substr(0, element.date.indexOf('T'))}</span>
               </td>
             </tr>
           </tbody>
