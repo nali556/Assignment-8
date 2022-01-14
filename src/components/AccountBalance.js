@@ -1,5 +1,5 @@
 import React from 'react';
-
+//Displays account balance
 function AccountBalance(props) {
     return (
         <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import AccountBalance from './AccountBalance';
-
+//Home page
 function Home(props) {
     return (
         <div>

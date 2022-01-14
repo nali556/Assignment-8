@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 export default function CreditData({ data }) {
+  //If code below not done, page does not load, as data is undefined when rendering
   if (data === undefined) {
     return <div>Loading...</div>;
   }
